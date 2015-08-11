@@ -9,7 +9,9 @@ public class EvilCorpApp {
 	boolean foundAccount = false, anotherAcct = true;
 	System.out.println("Welcome to Evil Corp Savings and Loan");
 	while (anotherAcct) {
-	System.out.println("If new user type new otherwise enter account number");
+	System.out.println("New User? Type \"new\"\n"
+					 + "Existing User? Type Acc. No\n"
+					 + "> ");
 	Account user = null;
 	while (!foundAccount) {
 	String account = sc.nextLine();
@@ -20,14 +22,14 @@ public class EvilCorpApp {
 	
 	String name = sc.nextLine().trim();
 	while(!Validator.checkName(name)){
-	System.out.println("Please enter a correct name:");
+	System.out.println("Incorrect name, retry:");
 	name = sc.nextLine().trim();
 	}
 	user = bank.createMemberAccount(name);
 	foundAccount = true;
 	System.out.println("An account has been created for "+
 	 user.getName() + ". \nYour account"+" number is : " + user.getNumber());
-	System.out.println("Enter an initial deposit: ");
+	System.out.println("Enter your starting balance\n> ");
 
 	// validate
 	String initialAmount=sc.nextLine().trim();
@@ -51,7 +53,7 @@ public class EvilCorpApp {
 	System.out.println("Your account has been found : ");
 	System.out.println(user);
 	} else {
-	System.out.println("Sorry your account has not been found please reenter your account number : ");
+	System.out.println("Sorry your account has not been found please re-enter your account number : ");
 	foundAccount = false;
 	}
 	}
